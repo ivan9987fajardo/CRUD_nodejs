@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My app</title>
+</head>
+<body>
+	<div style="float: left;">
+		<h2>Insert Item</h2>
+		<form action="\" method="POST">
+			<p>Name: <input type="text" name="name" ></p>
+			<p>Quantity: <input type="text" name="qty" ></p>
+			<p>Amount: <input type="text" name="amount"></p>
+			<input type="submit" value = "Insert">
+		</form>	
+
+		<h2>Update Item</h2>
+		<form action="\?_method=PUT" method="POST">
+			<p>ID: <select name="id">
+				<% for(var i=0; i < itemlist.length; i++) { %>
+				<option value="<%= itemlist[i].id %>"><%= itemlist[i].id %></option>
+				<% } %>
+			</select>
+			<p>Name: <input type="text" name="name" ></p>
+			<p>Quantity: <input type="text" name="qty" ></p>
+			<p>Amount: <input type="text" name="amount"></p>
+			<input type="submit" value = "Update">
+		</form>	
+
+		<h2>Delete Item</h2>
+		<form method="POST" action="/?_method=DELETE">
+		<p>ID: <select name="id">
+				<% for(var i=0; i < itemlist.length; i++) { %>
+				<option value="<%= itemlist[i].id %>"><%= itemlist[i].id %></option>
+				<% } %>
+			</select>
+	  	<button type="submit">Delete</button>
+		</form>
+	</div>
+	<div style="float: left;margin-left: 20%; ">
+		<h2>Item Table</h2>
+		<table style="text-align: center;">
+		    <thead>
+			    <tr>
+				    <th>ID</th>
+				    <th>Name</th>
+				    <th>Quantity</th>
+				    <th>Amount</th>
+
+			    </tr>
+		    </thead>
+
+	    <tbody>
+		    <% for(var i=0; i < itemlist.length; i++) { %>
+		    <tr>
+				<td><%= itemlist[i].id %></td>
+			    <td><%= itemlist[i].name %></td>
+				<td><%= itemlist[i].qty %></td>
+				<td><%= itemlist[i].amount %></td>
+
+
+		    </tr>
+		    <% } %>
+	    </tbody>
+
+	    </table>
+	
+	</div>
+	
+</body>
+</html>
